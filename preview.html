@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تاجر ٢ — معاينة</title>
+<style>
+:root{--blue:#1859a9;--gold:#e5b94d;--bg:#f3f6f9;--line:#dce3ea;--muted:#6c7784;--ink:#17212d}
+*{box-sizing:border-box}body{margin:0;background:#edf2f7;color:var(--ink);font-family:Arial,"Noto Naskh Arabic",sans-serif}
+.wrap{max-width:1050px;margin:auto;padding:16px}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.head h1{font-size:22px;margin:0}.head small,.muted{color:var(--muted)}
+.layout{display:grid;grid-template-columns:215px 1fr;gap:14px}.nav{background:white;border:1px solid var(--line);border-radius:15px;padding:8px;max-height:82vh;overflow:auto}.nav button{display:block;width:100%;text-align:right;padding:8px;border:0;border-radius:9px;background:white;color:#405061;cursor:pointer;font:inherit;font-size:13px}.nav button:hover,.nav button.active{background:#e9f1fb;color:var(--blue);font-weight:bold}
+.phone{width:390px;max-width:100%;height:760px;margin:auto;border:8px solid #192632;border-radius:30px;background:var(--bg);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 15px 40px #1a304a22}.status{height:25px;padding:5px 12px;font:11px Arial;direction:ltr}.appbar{padding:13px;background:var(--bg);border-bottom:1px solid var(--line);font-weight:bold;display:flex;justify-content:space-between}.scroll{overflow:auto;padding:12px;flex:1}.tag{font-size:10px;color:#80600c;background:#fff2d4;border:1px solid #edd99e;border-radius:20px;padding:5px 8px;display:inline-block;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.card{background:white;border:1px solid var(--line);border-radius:12px;padding:10px;margin:7px 0}.metric b{font-size:15px;color:var(--blue);display:block;margin-top:5px}.label{font-size:11px;color:var(--muted)}.row{display:flex;align-items:center;gap:9px}.ico{width:32px;height:32px;border-radius:9px;background:#edf4fc;color:var(--blue);display:grid;place-items:center}.grow{flex:1}.row b{font-size:12px}.row small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.amount{font-weight:bold;font-size:11px;white-space:nowrap}.title{font-weight:bold;font-size:14px;margin:12px 2px 6px}.btn{border:0;background:var(--blue);color:white;padding:9px 11px;border-radius:9px;font:inherit;font-size:11px;margin:3px}.light{background:white;color:var(--blue);border:1px solid var(--line)}.field{background:white;border:1px solid var(--line);border-radius:10px;padding:9px;margin:7px 0;color:#7b8794;font-size:11px}.field b{display:block;color:#596675;font-size:10px;margin-bottom:5px}.bar{height:8px;background:#e7edf3;border-radius:8px;margin:8px 0}.bar i{height:100%;display:block;background:var(--blue);border-radius:8px}.camera{height:290px;background:#1d2a37;border-radius:15px;display:grid;place-items:center;color:white;font-size:40px}.camera span{border:2px solid #80b6ff;border-radius:22px;width:180px;height:180px;display:grid;place-items:center}.foot{height:5px;width:105px;border-radius:5px;background:#17212d;margin:5px auto}
+@media(max-width:700px){.wrap{padding:9px}.head small{display:none}.layout{grid-template-columns:1fr}.nav{display:flex;gap:3px;max-height:none;white-space:nowrap}.nav button{width:auto}.phone{height:calc(100vh - 180px);min-height:540px}}
+</style>
+<div class="wrap">
+<header class="head"><div><h1>تاجر ٢</h1><small>معاينة شكلية — بيانات تجريبية</small></div><span class="tag">17 شاشة</span></header>
+<div class="layout"><nav class="nav" id="nav"></nav><section class="phone"><div class="status">9:41　● ● ●</div><div class="appbar"><span id="title"></span><span>▦</span></div><main class="scroll" id="screen"></main><div class="foot"></div></section></div>
+</div>
+<script>
+const row=(i,n,d,a="›")=>`<div class="card row"><span class="ico">${i}</span><span class="grow"><b>${n}</b><small>${d}</small></span><span class="amount">${a}</span></div>`;
+const field=(n,v)=>`<div class="field"><b>${n}</b>${v}</div>`;
+const metric=(n,v)=>`<div class="card metric"><span class="label">${n}</span><b>${v}</b></div>`;
+const views=[
+["الرئيسية","واجهة أساسية",`${metric("الأصناف","12")}${metric("تحتاج متابعة","3")}<div class="title">اختصارات</div><button class="btn">＋ فاتورة بيع</button><button class="btn light">قراءة فاتورة OCR</button><div class="title">الأصناف</div>${row("ق","قهوة تركي 250 جم","المتاح 8","85 ج.م")}${row("س","سكر أبيض 1 كجم","المتاح 3","32 ج.م")}${row("ش","شاي أسود","المتاح 16","68.50 ج.م")}`],
+["المنتجات","قائمة تجريبية",`${field("بحث","⌕ ابحث عن منتج")}${row("ق","قهوة تركي","المتاح 8","85 ج.م")}${row("س","سكر أبيض","المتاح 3","32 ج.م")}${row("ش","شاي أسود","المتاح 16","68.50 ج.م")}<button class="btn">＋ إضافة منتج</button>`],
+["إضافة منتج","نموذج واجهة",`${field("اسم المنتج","مثال: قهوة تركي")}${field("سعر الشراء","0.00 ج.م")}${field("سعر البيع","0.00 ج.م")}${field("الكمية","0")}${field("باركود أو QR","اختياري")}<button class="btn">حفظ المنتج</button>`],
+["فاتورة بيع","نموذج واجهة",`${field("العميل","عميل نقدي")}${row("ق","قهوة تركي","الكمية 2","170 ج.م")}${row("س","سكر أبيض","الكمية 1","32 ج.م")}${metric("الإجمالي","202.00 ج.م")}<button class="btn">حفظ الفاتورة</button>`],
+["فاتورة شراء","قيد التطوير حسب README",`${field("المورد","اكتب اسم المورد")}${row("ق","قهوة تركي","كمية 12","744 ج.م")}${row("س","سكر أبيض","كمية 20","500 ج.م")}<button class="btn">＋ إضافة صنف</button>`],
+["الماسح","شكل كاميرا فقط",`<div class="camera"><span>▦</span></div><p class="muted">شكل توضيحي؛ لا يستخدم الكاميرا.</p>`],
+["العملاء","بيانات مثال",`${field("بحث","⌕ ابحث عن عميل")}${row("م","محمد علي","عميل نقدي","0 ج.م")}${row("س","سارة محمود","آخر فاتورة اليوم","250 ج.م")}<button class="btn">＋ عميل جديد</button>`],
+["الموردون","بيانات مثال",`${row("ش","شركة النور","3 فواتير","1,240 ج.م")}${row("م","مؤسسة الهدى","فاتورة واحدة","500 ج.م")}<button class="btn">＋ مورد جديد</button>`],
+["الديون","واجهة / بيانات مثال",`${metric("مستحق لك","2,450 ج.م")}${metric("مستحق عليك","1,200 ج.م")}${row("م","محمد علي","موعد السداد 28 نوفمبر","750 ج.م")}`],
+["المصروفات","بيانات مثال",`${row("🚚","نقل","اليوم","180 ج.م")}${row("⚡","كهرباء","20 نوفمبر","420 ج.م")}<button class="btn">＋ تسجيل مصروف</button>`],
+["التحليلات","بيانات مثال",`${metric("المبيعات","8,420 ج.م")}${metric("الربح","1,380 ج.م")}<div class="title">الأسبوع الحالي</div>${[40,70,52,90,62,78,48].map(x=>`<div class="bar"><i style="width:${x}%"></i></div>`).join("")}`],
+["التقارير","قيد التطوير حسب README",`${row("▤","تقرير المبيعات","هذا الشهر","عرض")}${row("▦","تقرير المخزون","12 صنفًا","عرض")}<button class="btn light">تصدير PDF</button>`],
+["حركة المخزون","بيانات مثال",`${row("＋","إضافة مخزون","اليوم · قهوة تركي","+12")}${row("−","فاتورة بيع","اليوم · سكر أبيض","−2")}${row("↻","تسوية","أمس · شاي أسود","+1")}`],
+["التصنيفات","قائمة تجريبية",`${row("☕","مشروبات","5 أصناف")}${row("🥫","مواد غذائية","4 أصناف")}${row("🧴","منظفات","3 أصناف")}<button class="btn">＋ تصنيف</button>`],
+["استيراد البيانات","نموذج واجهة",`${row("⇧","رفع ملف المنتجات","CSV أو TSV")}${row("▧","قراءة فاتورة","صورة أو PDF · OCR")}<button class="btn">اختيار ملف</button>`],
+["الإشعارات","بيانات مثال",`${row("!","مخزون منخفض","سكر أبيض","قبل ساعة")}${row("✓","تم حفظ الفاتورة","رقم 1024","أمس")}`],
+["الإعدادات","واجهة شكلية",`${row("🏪","بيانات المتجر","الاسم والنشاط")}${row("👤","الحساب","الاسم واللغة")}${row("☾","المظهر","فاتح / داكن")}${row("↗","النسخ الاحتياطي","إدارة البيانات")}`]
+];
+function show(i){document.getElementById("title").textContent=views[i][0];document.getElementById("screen").innerHTML=`<span class="tag">${views[i][1]}</span>${views[i][2]}`;document.querySelectorAll(".nav button").forEach((b,n)=>b.classList.toggle("active",n===i))}
+document.getElementById("nav").innerHTML=views.map((v,i)=>`<button onclick="show(${i})">${i+1}. ${v[0]}</button>`).join("");show(0);
+</script>
+</html>
